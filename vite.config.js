@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/zash-lab-001/',
+  base: process.env.VERCEL ? '/' : '/zash-lab-001/',
   plugins: [
     react(),
     tailwindcss(),

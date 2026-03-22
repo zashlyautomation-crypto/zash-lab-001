@@ -1,4 +1,5 @@
 import animationController from './AnimationController';
+import { getAssetPath } from './pathUtils';
 
 /**
  * ZASH Intro Video System
@@ -12,7 +13,7 @@ class IntroVideoSystem {
         this.overlay = null;
         this.video = null;
         // Dynamically locate the video file in the /intro-video/ directory
-        this.videoSrc = '/intro-video/1db07f65-fcf2-4a3c-9173-28eae83bd48d.mp4';
+        this.videoSrc = getAssetPath('/intro-video/1db07f65-fcf2-4a3c-9173-28eae83bd48d.mp4');
         this.isDesktop = window.innerWidth >= 1024;
         this.hasSeenIntro = sessionStorage.getItem('zash_intro_seen') === 'true';
         this.isInitialized = false;

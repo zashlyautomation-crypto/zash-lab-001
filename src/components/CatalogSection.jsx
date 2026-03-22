@@ -3,6 +3,7 @@ import animationController from '../utils/AnimationController';
 import { useDispatch } from 'react-redux';
 import { products } from '../data/products';
 import { selectProduct } from '../store/productSlice';
+import { getAssetPath } from '../utils/pathUtils';
 
 
 const CatalogSection = () => {
@@ -90,7 +91,7 @@ const CatalogSection = () => {
                     {/* Row 1: Poster Card (2 cols) + 3 Product Cards */}
                     <div className="col-span-2 aspect-square lg:aspect-[1.2/1] overflow-hidden rounded-2xl">
                         <img
-                            src="/images/poster/2bf6a9f8-5467-4ce6-866a-a16dea55c11d.png"
+                            src={getAssetPath('/images/poster/2bf6a9f8-5467-4ce6-866a-a16dea55c11d.png')}
                             alt="Aurora Collection"
                             className="w-full h-4/5 object-cover rounded-2xl"
                         />

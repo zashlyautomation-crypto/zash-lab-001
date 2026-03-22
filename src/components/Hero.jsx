@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import animationController from '../utils/AnimationController';
+import { getAssetPath } from '../utils/pathUtils';
 
 // ─── Data ───────────────────────────────────────────────────────────────
 const heroProducts = [
@@ -10,8 +11,8 @@ const heroProducts = [
         subtitle: 'SERIES: KINGS No. 1 // DROP 1',
         colors: ['WHITE', 'SILVER'],
         sizes: ['S', 'M', 'L', 'XL'],
-        img: '/images/character1.png',
-        thumb: '/images/character1.png'
+        img: getAssetPath('/images/character1.png'),
+        thumb: getAssetPath('/images/character1.png')
     },
     {
         id: 2,
@@ -20,8 +21,8 @@ const heroProducts = [
         subtitle: 'SERIES: KINGS No. 1 // DROP 2',
         colors: ['BLACK', 'CHARCOAL'],
         sizes: ['S', 'M', 'L', 'XL'],
-        img: '/images/character2.png',
-        thumb: '/images/character2.png'
+        img: getAssetPath('/images/character2.png'),
+        thumb: getAssetPath('/images/character2.png')
     }
 ];
 
@@ -144,7 +145,7 @@ const Hero = () => {
             <div className="hero-bg absolute inset-0 z-0 pointer-events-none">
                 <div
                     className="absolute inset-0 bg-center bg-cover bg-no-repeat"
-                    style={{ backgroundImage: "url('/images/hero-section-bg.png')" }}
+                    style={{ backgroundImage: `url('${getAssetPath('/images/hero-section-bg.png')}')` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-right from-[#0d1520]/85 via-[#0d1520]/30 to-[#0d1520]/55" />
                 <div className="absolute inset-0 bg-gradient-to-bottom from-[#0d1520]/60 via-transparent to-[#0d1520]/70" />
@@ -157,7 +158,7 @@ const Hero = () => {
             >
                 <div
                     className="w-[70%] h-[80%] bg-contain bg-center bg-no-repeat opacity-0"
-                    style={{ backgroundImage: "url('/images/hero-section-bg.png')" }}
+                    style={{ backgroundImage: `url('${getAssetPath('/images/hero-section-bg.png')}')` }}
                 />
             </div>
 

@@ -1,16 +1,16 @@
 {
-  "homepage": "https://github.com/zashlyautomation-crypto/zash-winter",
+  "homepage": "https://github.com/zashlyautomation-crypto/zash-lab-001/",
   "name": "lab-001",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@barba/core": "^2.10.3",

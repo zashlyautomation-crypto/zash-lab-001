@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100;200;300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-ice: #c8dbf0;
+  --color-frost: #f0f5fa;
+  --color-snow: #ffffff;
+  --color-steel: #415770;
+  --color-steel-dark: #293a4c;
+  --color-steel-accent: #6f8ba4;
+
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-inter: Inter, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-inter text-snow antialiased overflow-x-hidden w-full;
+    background: #1a2533;
+    min-height: 100vh;
+  }
+
+  html {
+    @apply overflow-x-hidden;
+  }
+
+  #root {
+    @apply overflow-x-hidden w-full;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bebas uppercase tracking-wider text-snow;
+  }
+}
+
+/* Scroll Lock for Preloader */
+html.is-loading,
+html.is-loading body {
+  overflow: hidden !important;
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
+/* Custom lenis smooth scroll classes */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* UI Utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.glass-panel {
+  @apply bg-white/5 border border-white/10 backdrop-blur-3xl;
+}
+
+/* Hero Mobile: convert right carousel to horizontal swipe */
+@media (max-width: 767px) {
+  .hero-carousel-mobile {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    width: 100% !important;
+    padding-bottom: 12px;
+  }
+
+  .hero-carousel-mobile>* {
+    flex-shrink: 0 !important;
+  }
+}

@@ -1,0 +1,74 @@
+.preloader-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999999;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: auto;
+  will-change: opacity;
+}
+
+.preloader-solid-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  z-index: 10;
+  will-change: opacity;
+}
+
+.preloader-masked-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  z-index: 5;
+  will-change: opacity;
+
+  /* Masking: Base64 for pixel-perfect reliability across browsers */
+  /* This SVG is a solid black rect with a transparent Z hole */
+  -webkit-mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iYmxhY2siLz48cGF0aCBkPSJNMjUgMjUgSDc1IEwyNSA3NSBINzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0idHJhbnNwYXJlbnQiIHN0cm9rZS13aWR0aD0iMTIiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1saW5lY2FwPSJidXR0Ii8+PC9zdmc+');
+
+  /* Alternative refined masking using composite */
+  -webkit-mask-image: linear-gradient(black, black), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMjUgMjUgSDc1IEwyNSA3NSBINzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMTIiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1saW5lY2FwPSJidXR0Ii8+PC9zdmc+');
+  -webkit-mask-composite: destination-out;
+  mask-image: linear-gradient(black, black), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMjUgMjUgSDc1IEwyNSA3NSBINzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMTIiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1saW5lY2FwPSJidXR0Ii8+PC9zdmc+');
+  mask-composite: exclude;
+
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.preloader-logo-wrapper {
+  position: relative;
+  z-index: 20;
+  width: min(40vw, 400px);
+  height: min(40vw, 400px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  will-change: opacity;
+}
+
+.z-logo-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+@media (max-width: 768px) {
+  .preloader-logo-wrapper {
+    width: min(60vw, 250px);
+    height: min(60vw, 250px);
+  }
+}
+
+/* Custom Easing for GSAP */
+:root {
+  --ease-premium: cubic-bezier(0.4, 0, 0.2, 1);
+}

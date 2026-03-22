@@ -100,8 +100,23 @@ class IntroVideoSystem {
             this.exit();
         };
 
+        // Handle Auto-Play Promise & Policies
+        const playPromise = this.video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.warn('[IntroVideo] Autoplay blocked or failed:', error);
+                this.exit();
+            });
+        }
+
+        // Hard Failsafe: If video doesn't end within 12 seconds (length of video + buffer), force exit!
+        this._fallbackTimer = setTimeout(() => {
+            console.warn('[IntroVideo] Hard timeout reached, forcing exit.');
+            this.exit();
+        }, 12000);
+
         // Extra failsafe: click to skip if video is somehow stuck (optional but useful)
-        // this.overlay.addEventListener('click', () => this.exit());
+        this.overlay.addEventListener('click', () => this.exit());
     }
 
     /**
@@ -133,6 +148,11 @@ class IntroVideoSystem {
      * Final cleanup and state update.
      */
     cleanup() {
+        if (this._fallbackTimer) {
+            clearTimeout(this._fallbackTimer);
+            this._fallbackTimer = null;
+        }
+
         if (this.overlay && this.overlay.parentNode) {
             this.overlay.parentNode.removeChild(this.overlay);
         }

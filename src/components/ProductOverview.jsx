@@ -194,20 +194,6 @@ const ProductOverview = () => {
                                 </button>
                             )}
                         </div>
-
-                        {/* Product Accordions */}
-                        <div className="flex flex-col mt-4">
-                            <div className="po-animate po-accordion opacity-0">
-                                <AccordionItem title="Materials" content={selectedProduct.materials} />
-                            </div>
-                            <div className="po-animate po-accordion opacity-0">
-                                <AccordionItem title="Technology" content={selectedProduct.technology} />
-                            </div>
-                            <div className="po-animate po-accordion opacity-0">
-                                <AccordionItem title="Care & Maintenance" content={selectedProduct.care} />
-                            </div>
-                        </div>
-
                     </div>
 
                     {/* ─────────────── CENTER PANEL ─────────────── */}

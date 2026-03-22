@@ -59,7 +59,7 @@ class IntroVideoSystem {
             width: '100vw',
             height: '100vh',
             backgroundColor: '#000', // Match ZASH theme
-            zIndex: '2147483647', // Highest possible z-index
+            zIndex: '2147483646', // Strictly LESS than Preloader (which is 2147483647)
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -98,6 +98,19 @@ class IntroVideoSystem {
 
         this.video.onended = () => {
             this.exit();
+        };
+
+        // UX Feature: Fast-fail if the video cannot start playing fast enough
+        this._playStallTimeout = setTimeout(() => {
+            console.warn('[IntroVideo] Video buffering took too long. Skipping for better UX.');
+            this.exit();
+        }, 3500); // 3.5 seconds max tolerance for slow connections
+
+        this.video.onplaying = () => {
+            if (this._playStallTimeout) {
+                clearTimeout(this._playStallTimeout);
+                this._playStallTimeout = null;
+            }
         };
 
         // Handle Auto-Play Promise & Policies
@@ -148,6 +161,11 @@ class IntroVideoSystem {
      * Final cleanup and state update.
      */
     cleanup() {
+        if (this._playStallTimeout) {
+            clearTimeout(this._playStallTimeout);
+            this._playStallTimeout = null;
+        }
+
         if (this._fallbackTimer) {
             clearTimeout(this._fallbackTimer);
             this._fallbackTimer = null;

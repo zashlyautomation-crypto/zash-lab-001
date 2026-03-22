@@ -60,6 +60,7 @@ const ProductCard = ({ product, className = "", hasButton = false, idNumber = ""
           ref={imageRef}
           src={product.image}
           alt={product.name}
+          loading="lazy"
           className="w-full h-full max-h-[220px] object-contain relative z-10 drop-shadow-[0_12px_20px_rgba(0,0,0,0.25)] mix-blend-normal transform scale-[1.05]"
         />
       </div>

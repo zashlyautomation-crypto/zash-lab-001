@@ -59,6 +59,7 @@ const CartItemCard = ({ item, onRemove, onIncrease, onDecrease }) => {
                     <img
                         src={item.image}
                         alt={item.name}
+                        loading="lazy"
                         className="w-full h-full object-cover p-0 opacity-90"
                     />
                     {/* Corner tag */}

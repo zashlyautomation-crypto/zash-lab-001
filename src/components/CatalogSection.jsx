@@ -88,11 +88,11 @@ const CatalogSection = () => {
                 {/* Grid Structure: Strictly 5 columns on desktop */}
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-24">
 
-                    {/* Row 1: Poster Card (2 cols) + 3 Product Cards */}
                     <div className="col-span-2 aspect-square lg:aspect-[1.2/1] overflow-hidden rounded-2xl">
                         <img
                             src={getAssetPath('/images/poster/2bf6a9f8-5467-4ce6-866a-a16dea55c11d.png')}
                             alt="Aurora Collection"
+                            loading="lazy"
                             className="w-full h-4/5 object-cover rounded-2xl"
                         />
                     </div>
@@ -205,6 +205,7 @@ const ProductCard = ({ product, minimal = false, onClick }) => {
                 <img
                     src={product.image}
                     alt={product.name}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-all duration-700 drop-shadow-2xl group-hover:scale-105"
                 />
             </div>

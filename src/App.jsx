@@ -10,14 +10,16 @@ import CatalogSection from './components/CatalogSection';
 import Footer from './components/Footer';
 import Atmosphere from './components/Atmosphere';
 import ProductOverview from './components/ProductOverview';
-import AboutPage from './components/about/AboutPage';
 import PageTransition from './components/about/PageTransition';
-import NewArrivalsPage from './components/new-arrivals/NewArrivalsPage';
 import Preloader from './components/Preloader';
 import CartSidebar from './components/CartSidebar';
-import CheckoutPage from './components/checkout/CheckoutPage';
 import { NotFound } from './components/not-found/404';
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
+
+// ─── Lazy Loaded Routes ────────────────────────────────────
+const AboutPage = lazy(() => import('./components/about/AboutPage'));
+const NewArrivalsPage = lazy(() => import('./components/new-arrivals/NewArrivalsPage'));
+const CheckoutPage = lazy(() => import('./components/checkout/CheckoutPage'));
 
 // ─── Home page wrapper ─────────────────────────────────────
 function HomePage() {
@@ -119,13 +121,15 @@ function App() {
       
       {/* Centralized Page Transition Manager */}
       <PageTransition />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/new-arrivals" element={<NewArrivalsPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/new-arrivals" element={<NewArrivalsPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </HashRouter>
   );
 }

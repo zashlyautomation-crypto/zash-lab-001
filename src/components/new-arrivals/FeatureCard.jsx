@@ -91,6 +91,7 @@ const FeatureCard = ({ product, className = "" }) => {
               <img
                 src={img}
                 alt={`${product.name} view ${idx + 1}`}
+                loading="lazy"
                 className="w-full h-auto max-h-[300px] object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.3)] relative z-10"
               />
             </SwiperSlide>

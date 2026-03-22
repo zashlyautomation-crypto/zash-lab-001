@@ -147,6 +147,7 @@ class IntroVideoSystem {
         sessionStorage.setItem('zash_intro_seen', 'true');
 
         console.log('[IntroVideo] Intro complete.');
+        window.dispatchEvent(new Event('zash_intro_finished'));
     }
 }
 

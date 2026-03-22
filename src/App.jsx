@@ -94,7 +94,11 @@ function App() {
       handleLoad();
     } else {
       window.addEventListener('load', handleLoad);
-      return () => window.removeEventListener('load', handleLoad);
+      const fallback = setTimeout(handleLoad, 4000); // Failsafe if onload gets stuck
+      return () => {
+        window.removeEventListener('load', handleLoad);
+        clearTimeout(fallback);
+      };
     }
   }, []);
 
